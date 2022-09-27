@@ -9,7 +9,7 @@ function Form() {
 
     function handleEvent(event) {
         const name = event.target.name;
-        const value = event.target.value;
+        let value = event.target.value;
         if (event.target.type === "checkbox") {
             value = event.target.checked;
         }
@@ -27,21 +27,23 @@ function Form() {
 
     }
     return ( <
-        form >
+        form onSubmit = { handleSubmit } >
         <
         input type = "text"
         name = "firstName"
-        onChange = { handleFirstNameChange }
+        onChange = { handleEvent }
         value = { formData.firstName }
         /> <
         input type = "text"
         name = "lastName"
-        onChange = { handleLastNameChange }
+        onChange = { handleEvent }
         value = { formData.lastName }
         /> <
         input type = "checkbox"
         name = "admin"
-        value = "formData.admin" / > <
+        onChange = { handleEvent }
+        checked = { formData.admin }
+        / > <
         button type = "submit" > Submit < /button> < /
         form >
     );
